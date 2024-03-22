@@ -2,3 +2,13 @@
   text-align: center;
   background-color: #bacec1;
 }
+
+h1 {
+  color: #f6f4e8;
+  font-family: monospace;
+  font-size: 250%;
+}
+
+.MusicNote {
+  color: #f6f4e8;
+}

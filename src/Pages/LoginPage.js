@@ -1,5 +1,6 @@
 // import logo from "./logo.svg";
 import "./LoginPage.css";
+import MusicNote from "@material-ui/icons/MusicNote";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
 import Input from "@material-ui/core/Input";
@@ -7,6 +8,7 @@ import { useState } from "react";
 
 function LoginPage({ setLoggedIn }) {
   const [password, setPassword] = useState("");
+  const [wrongPassword, setWrongPassword] = useState("");
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -15,7 +17,7 @@ function LoginPage({ setLoggedIn }) {
       setLoggedIn(true);
       navigate("/manage/dashboard");
     } else {
-      alert("Incorrect Password");
+      setWrongPassword("Incorrect Password");
     }
   }
 
@@ -27,18 +29,23 @@ function LoginPage({ setLoggedIn }) {
         flexDirection: "column",
         height: "50vh",
         width: "auto",
+        alignItems: "center",
       }}
     >
-      <h1 style={{ padding: "1rem", margin: "1rem", marginBottom: "20%" }}>
+      <h1 style={{ padding: "1rem", margin: ".75rem" }}>
         Welcome to <br /> GuitarTabStorageApp
       </h1>
-
+      <MusicNote
+        className="MusicNote"
+        style={{ height: "3rem", width: "auto", marginBottom: "1.25rem" }}
+      />
       <h3>Username</h3>
       <Input />
 
       <h3>Password</h3>
       <Input onInput={(e) => setPassword(e.target.value)} />
-      <div style={{ margin: "2.5rem" }}>
+      <p style={{ color: "red" }}>{wrongPassword}</p>
+      <div>
         <Button
           variant="contained"
           sx={{ color: "#1d3124" }}
