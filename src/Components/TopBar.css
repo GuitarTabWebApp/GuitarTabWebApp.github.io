@@ -1,0 +1,37 @@
+.topBar {
+  width: 100%;
+  background-color: #bacec1;
+  color: #fff;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navLinksContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLinks {
+  margin-left: 20px;
+  transition: background-color 0.3s ease;
+  height: "100%" !important;
+}
+
+/* Define hover effect */
+.navLinks:hover {
+  background-color: red;
+}
