@@ -12,3 +12,7 @@ h1 {
 .MusicNote {
   color: #f6f4e8;
 }
+
+.MuiButton-colorPrimary {
+  color: #000000;
+}

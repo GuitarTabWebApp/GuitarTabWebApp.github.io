@@ -1,7 +1,4 @@
-// import logo from "./logo.svg";
 import "./HomePage.css";
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 
 function HomePage() {
   return (

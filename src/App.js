@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // import MainBox from "./Components/MainBox";
 import LoginPage from "./Pages/LoginPage";
 import HomePage from "./Pages/HomePage";
+import TopBar from "./Components/TopBar";
 
 //Import Style
 import "./App.css";
@@ -33,6 +34,7 @@ const App = () => {
     >
       <div>
         <BrowserRouter>
+          <TopBar LoggedIn={LoggedIn} setLoggedIn={setLoggedIn} sx={{}} />
           <Routes>
             <Route
               path="/manage"

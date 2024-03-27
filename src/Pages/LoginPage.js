@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
 import Input from "@material-ui/core/Input";
 import { useState } from "react";
+import CryptoJS from "crypto-js";
 
 function LoginPage({ setLoggedIn }) {
   const [password, setPassword] = useState("");
@@ -20,9 +21,13 @@ function LoginPage({ setLoggedIn }) {
     }
   }
 
+  function getSHA(e) {
+    return CryptoJS.SHA256(password).toString();
+  }
+
   function handleSubmit(e) {
-    console.log(password);
-    if (password.length !== 0) {
+    setPassword(getSHA());
+    if (password !== null) {
       setLoggedIn(true);
       navigate("/HomePage");
     } else {
@@ -59,11 +64,7 @@ function LoginPage({ setLoggedIn }) {
         />
         <p style={{ color: "red" }}>{wrongPassword}</p>
         <div>
-          <Button
-            variant="contained"
-            sx={{ color: "#1d3124" }}
-            onClick={(e) => handleSubmit(e)}
-          >
+          <Button color="primary" onClick={(e) => handleSubmit(e)}>
             Login
           </Button>
         </div>
