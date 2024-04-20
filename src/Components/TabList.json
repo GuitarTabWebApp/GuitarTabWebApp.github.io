@@ -1,0 +1,32 @@
+[
+  {
+    "Index": "1",
+    "Name": "Asarai Maina Ma",
+    "Artist": "Diwas Gurung",
+    "Location": "src/Components/Tabs/Asarai Maina Ma.pdf"
+  },
+  {
+    "Index": "2",
+    "Name": "Chitthi Bhitra",
+    "Artist": "Sajjan Raj Vaidya",
+    "Location": "src/Components/Tabs/chitthi bhitra.pdf"
+  },
+  {
+    "Index": "3",
+    "Name": "Farki Farki",
+    "Artist": "Albatross",
+    "Location": "src/Components/Tabs/farki farki.pdf"
+  },
+  {
+    "Index": "4",
+    "Name": "Naganya Maya",
+    "Artist": "Sajjan Raj Vaidya",
+    "Location": "src/Components/Tabs/naganya maya.pdf"
+  },
+  {
+    "Index": "5",
+    "Name": "When I Was Your Man",
+    "Artist": "Bruno Mars",
+    "Location": "src/Components/Tabs/when i was your man.pdf"
+  }
+]

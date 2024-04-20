@@ -1,22 +1,38 @@
-// Import Libraries
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-
-// Import Components
-// import MainBox from "./Components/MainBox";
 import LoginPage from "./Pages/LoginPage";
 import HomePage from "./Pages/HomePage";
+import TabPage from "./Pages/TabPage"; // Make sure to import TabPage
 import TopBar from "./Components/TopBar";
-
-//Import Style
 import "./App.css";
 
 const App = () => {
-  //This is to check if the user is logged in
   const [LoggedIn, setLoggedIn] = useState(false);
+  const [Page, setPage] = useState("Login"); // State to store the current page
+  // const [RoutePath, setRoutePath] = useState("/manage");
 
-  // Logging the value of LoggedIn outside of JSX
-  console.log("LoggedIn:", LoggedIn);
+  useEffect(() => {
+    console.log("Page changed to:", Page);
+  }, [Page]);
+
+  const loggedIn = () => {
+    return LoggedIn; // Return the value of LoggedIn
+  };
+
+  const getPage = () => {
+    switch (Page) {
+      case "Tabs":
+        return <TabPage />;
+      default:
+        return <HomePage />;
+    }
+  };
+
+  // Function to handle login state changes
+  const handleLoginStateChange = (loggedIn) => {
+    setLoggedIn(loggedIn);
+    localStorage.setItem("LoggedIn", loggedIn); // Persist the login state to local storage
+  };
 
   return (
     <body
@@ -34,27 +50,37 @@ const App = () => {
     >
       <div>
         <BrowserRouter>
-          <TopBar LoggedIn={LoggedIn} setLoggedIn={setLoggedIn} sx={{}} />
+          {/* Pass the setPage function as a prop to TopBar */}
+          <TopBar LoggedIn={LoggedIn} onPageChange={setPage} sx={{}} />
           <Routes>
-            <Route
-              path="/manage"
-              element={<LoginPage setLoggedIn={setLoggedIn} />}
-            />
-            <Route exact path="/HomePage" element={<HomePage />} />
-
+            {/* Conditionally render the Route for LoginPage */}
+            {!loggedIn() && (
+              <Route
+                path="/manage"
+                element={<LoginPage setLoggedIn={handleLoginStateChange} />}
+              />
+            )}
+            {/* Render the Route for HomePage */}
+            {loggedIn() ? (
+              <Route path="/HomePage" element={getPage()} />
+            ) : (
+              <Route
+                path="/manage"
+                element={<LoginPage setLoggedIn={handleLoginStateChange} />}
+              />
+            )}
+            {/* Redirect to the appropriate page based on login status */}
             <Route
               exact
               path="/"
               element={
-                <Navigate to={LoggedIn ? "/manage/dashboard" : "/manage"} />
+                loggedIn() ? (
+                  <Navigate to="/HomePage" />
+                ) : (
+                  <Navigate to="/manage" />
+                )
               }
             />
-
-            {/* <Route path="/" element={<LoginPage setLoggedIn={setLoggedIn} />} />
-            <Route
-              path="/HomePage"
-              element={LoggedIn ? <HomePage /> : <Navigate to="/" />}
-            /> */}
           </Routes>
         </BrowserRouter>
       </div>

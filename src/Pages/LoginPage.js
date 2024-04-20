@@ -8,7 +8,7 @@ import Input from "@material-ui/core/Input";
 import { useState } from "react";
 import CryptoJS from "crypto-js";
 
-function LoginPage({ setLoggedIn }) {
+function LoginPage({ setLoggedIn, setPage }) {
   const [password, setPassword] = useState("");
   const [wrongPassword, setWrongPassword] = useState("");
   const navigate = useNavigate();
